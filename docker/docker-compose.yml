@@ -49,8 +49,6 @@ services:
     # Import all variables from .env file
     env_file:
       - ../.env
-    volumes:
-      - ../backend:/app
     # These variables override any from .env file
     # Required for container networking (services refer to container names, not localhost)
     environment:
@@ -183,8 +181,6 @@ services:
       - TEMPORAL_NAMESPACE=default
       - TEMPORAL_TASK_QUEUE=airweave-sync-queue
       - TEMPORAL_ENABLED=true
-    volumes:
-      - ../backend:/app
     entrypoint: [ "python", "-m", "airweave.platform.temporal.worker" ]
     depends_on:
       postgres:
